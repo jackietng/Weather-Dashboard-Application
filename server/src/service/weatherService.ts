@@ -12,7 +12,7 @@ class Weather {
   city: string 
   icon: string
   iconDescription: string 
-  temperature: number
+  tempF: number
   windSpeed: number
   humidity: number
   date: Date
@@ -21,7 +21,7 @@ class Weather {
     city: string, 
     icon: string,
     iconDescription: string, 
-    temperature: number,
+    tempF: number,
     windSpeed: number,
     humidity: number,
     date: string,
@@ -29,7 +29,7 @@ class Weather {
     this.city = city
     this.icon = icon
     this.iconDescription = iconDescription
-    this.temperature = temperature
+    this.tempF = tempF
     this.windSpeed = windSpeed
     this.humidity = humidity
     this.date = new Date(date)
