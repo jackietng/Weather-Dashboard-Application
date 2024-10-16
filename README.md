@@ -32,7 +32,7 @@ npm run start
 ```
 
 ## Usage
-The application can be viewed live at 
+The application can be viewed live at [https://weather-dashboard-application-ikgn.onrender.com/](https://weather-dashboard-application-ikgn.onrender.com/).
 
 **Note:** This web application can take up to 60 seconds to load as it was deployed to [Render's Hobby Tier]([https:](https://render.com/pricing)).
 
