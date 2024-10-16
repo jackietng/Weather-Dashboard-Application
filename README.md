@@ -29,6 +29,7 @@ npm run start
 
 ## Usage
 The application can be viewed live at 
+
 **Note:** This web application can take up to 60 seconds to load as it was deployed to [Render's Hobby Tier]([https:](https://render.com/pricing)).
 
 ## Features
