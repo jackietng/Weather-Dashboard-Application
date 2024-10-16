@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
   
   // TODO: GET weather data from city name
   const city = req.body.cityName;
-  const weatherData = await WeatherService.getWeatherForCity(req.body.cityName); 
+  const weatherData = await WeatherService.getWeatherForCity(city); 
   res.json(weatherData);
 
   // TODO: save city to search history
