@@ -3,10 +3,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
+<<<<<<< HEAD
+This weather dashboard application helps vacationers plan and pick their destinations accordingly by showing real-time weather forecasts for up to 5 days. This was also build for my own learning and growth as a developer in back-end servers, Typescript, and Render. 
+=======
 This weather dashboard application helps vacationers plan and pick their destinations accordingly by showing real-time weather forecasts for up to 5 days. This was also build for my own learning and growth as a developer in back-end servers, Typescript and Render. 
+>>>>>>> main
 
 ## Table of Contents
-  * [Description](#description)
+  * [Description](#description)S
   * [Installation](#installation)
   * [Usage](#usage)
   * [Features](#features)
@@ -29,6 +33,7 @@ npm run start
 
 ## Usage
 The application can be viewed live at 
+
 **Note:** This web application can take up to 60 seconds to load as it was deployed to [Render's Hobby Tier]([https:](https://render.com/pricing)).
 
 ## Features

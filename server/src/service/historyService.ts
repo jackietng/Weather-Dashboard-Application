@@ -1,27 +1,30 @@
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // TODO: Define a City class with name and id properties
 class City {
+  name: string; 
+  id: string;
   constructor(
-    public name: string, 
-    public id: string, 
-  ) {}
+    name: string,
+    id: string) {
+      this.name = name; 
+      this.id = id;
+    }
 }
 // TODO: Complete the HistoryService class
 class HistoryService {
-  private filePath: string;
-
-  constructor() {
-    this.filePath = path.join(__dirname, 'searchHistory.json');
-  }
   // TODO: Define a read method that reads from the searchHistory.json file
-  private async read(): Promise<City[]> {
+  private async read(): Promise<any[]> {
     try {
-      const data = await fs.readFile(this.filePath, 'utf-8');
-      return JSON.parse(data) as City[];
+      const data = await fs.readFile(path.join(__dirname, '../../db/searchHistory.json'), 'utf-8');
+      return JSON.parse(data);
     } catch (error) {
-      console.error('Error reading the file:', error);
+      console.error(error);
       return [];
     }
   }
@@ -29,9 +32,9 @@ class HistoryService {
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]): Promise<void> {
     try {
-      await fs.writeFile(this.filePath, JSON.stringify(cities, null, 2));
+      await fs.writeFile(path.join(__dirname, '../../db/searchHistory.json'), JSON.stringify(cities));
     } catch (error) {
-      console.error('Error writing to the file:', error);
+      console.error(error);
     }
   }
 
