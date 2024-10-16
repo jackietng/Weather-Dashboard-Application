@@ -6,7 +6,7 @@
 This weather dashboard application helps vacationers plan and pick their destinations accordingly by showing real-time weather forecasts for up to 5 days. This was also build for my own learning and growth as a developer in back-end servers, Typescript and Render. 
 
 ## Table of Contents
-  * [Description](#description)S
+  * [Description](#description)
   * [Installation](#installation)
   * [Usage](#usage)
   * [Features](#features)
@@ -28,7 +28,7 @@ npm run start
 ```
 
 ## Usage
-The application can be viewed live at [https://weather-dashboard-application-ikgn.onrender.com/](https://weather-dashboard-application-ikgn.onrender.com/).
+The application can be viewed live at [https://weather-dashboard-application-ikgn.onrender.com/](https://weather-dashboard-application-ikgn.onrender.com).
 
 **Note:** This web application can take up to 60 seconds to load as it was deployed to [Render's Hobby Tier]([https:](https://render.com/pricing)).
 
