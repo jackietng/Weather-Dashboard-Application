@@ -6,34 +6,27 @@ import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
 router.post('/', async (req, res) => {
-  const { city } = req.body; // Extract city name from request body
-  try {
+  
   // TODO: GET weather data from city name
-    const weatherData = await WeatherService.getWeatherForCity(city); 
+  const city = req.body.cityName;
+  const weatherData = await WeatherService.getWeatherForCity(city); 
+  res.json(weatherData);
 
   // TODO: save city to search history
-    await HistoryService.addCity(city);
-
-  // Return weather data
-  res.json(weatherData);
-} catch (error) {
-  console.error(error);
-  res.status(500).json({ error: 'An error occurred while retrieving weather data.' });
-}
+  await HistoryService.addCity(city);
 });
 
 // TODO: GET search history
-router.get('/history', async (req, res) => {
-  try {
-    const history = await HistoryService.getCities();
-    res.json(history);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while retrieving search history.' });
-  }
+router.get('/history', async (_, res) => {
+ const cities = await HistoryService.getCities();
+ res.json(cities); 
 });
 
 // * BONUS TODO: DELETE city from search history
-router.delete('/history/:id', async (req, res) => {});
+router.delete('/history/:id', async (req, res) => {
+  const id = req.params.id; 
+  await HistoryService.removeCity(id);
+  res.sendStatus(204);
+});
 
 export default router;
