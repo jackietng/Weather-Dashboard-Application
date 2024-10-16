@@ -81,7 +81,7 @@ const renderCurrentWeather = (currentWeather: any): void => {
     currentWeather;
 
   // convert the following to typescript
-  heading.textContent = `${city} (${date})`;
+  heading.textContent = `${city} (${formatDate(new Date(date))})`;
   weatherIcon.setAttribute(
     'src',
     `https://openweathermap.org/img/w/${icon}.png`
@@ -124,7 +124,7 @@ const renderForecastCard = (forecast: any) => {
     createForecastCard();
 
   // Add content to elements
-  cardTitle.textContent = date;
+  cardTitle.textContent = formatDate(new Date(date));
   weatherIcon.setAttribute(
     'src',
     `https://openweathermap.org/img/w/${icon}.png`
@@ -139,6 +139,14 @@ const renderForecastCard = (forecast: any) => {
   }
 };
 
+const formatDate = (date: Date): string => {
+    return new Intl.DateTimeFormat('en-US', {
+        month: 'short',   // format the month as 'MMM'
+        day: 'numeric',  // format day as 'd'
+        year: 'numeric'  // format year as 'yyyy'
+    }).format(date);
+};
+
 const renderSearchHistory = async (searchHistory: any) => {
   const historyList = await searchHistory.json();
 
@@ -147,7 +155,7 @@ const renderSearchHistory = async (searchHistory: any) => {
 
     if (!historyList.length) {
       searchHistoryContainer.innerHTML =
-        '<p class="text-center">No Previous Search History</p>';
+        '<p class="text-center" style="padding-left: 2rem">No Previous Search History</p>';
     }
 
     // * Start at end of history array and count down to show the most recent cities at the top.
