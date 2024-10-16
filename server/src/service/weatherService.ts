@@ -3,8 +3,8 @@ dotenv.config();
 
 // TODO: Define an interface for the Coordinates object
 interface Coordinates {
-  lat: number; 
-  lon: number; 
+  latitude: number; 
+  longitude: number; 
 }
 
 // TODO: Define a class for the Weather object
@@ -57,11 +57,14 @@ class WeatherService {
 
   // TODO: Create destructureLocationData method
   private destructureLocationData(locationData: any): Coordinates {
-    return {
-      lat: locationData.coord.lat,
-      lon: locationData.coord.lon,
-    };
-  }
+		try {
+			const { lat, lon } = locationData[0]
+			return { latitude: lat, longitude: lon }
+		} catch (error) {
+			console.error(error)
+			return { latitude: 0, longitude: 0 }
+		}
+	}
   
   // TODO: Create buildGeocodeQuery method
   private buildGeocodeQuery(): string {
@@ -70,9 +73,9 @@ class WeatherService {
   }
   
   // TODO: Create buildWeatherQuery method
-  private buildWeatherQuery(coordinates: Coordinates): string {
-    return `lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&lang=en&appid=${this.apiKey}`;
-  }
+	private buildWeatherQuery(coordinates: Coordinates): string {
+		return `lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&lang=en&appid=${this.apiKey}`
+	}
   
   // TODO: Create fetchAndDestructureLocationData method
   private async fetchAndDestructureLocationData(): Promise<Coordinates> {
@@ -82,7 +85,7 @@ class WeatherService {
       return this.destructureLocationData(locationData);    
     } catch (error) {
       console.error(error);
-      return { lat: 0, lon: 0};
+      return { latitude: 0, longitude: 0};
     }
   }
   
