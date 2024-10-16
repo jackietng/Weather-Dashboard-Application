@@ -40,15 +40,20 @@ class Weather {
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
   private baseURL: string = process.env.API_BASE_URL || "";
+  private geocodeBaseURL: string = process.env.GEO_API_BASE_URL || "";
   private apiKey: string = process.env.API_KEY || "";
   city: string = '';
 
   // TODO: Create fetchLocationData method
-  private async fetchLocationData(query: string): Promise<Coordinates> {
-    const response = await fetch(`${this.baseURL}weather?q=${query}&appid=${this.apiKey}`);
-    const data = await response.json();
-    return this.destructureLocationData(data);
-  }
+  private async fetchLocationData(query: string): Promise<any> {
+		try {
+			const response = await fetch(`${this.geocodeBaseURL}?${query}`)
+			return await response.json()
+		} catch (error) {
+			console.error(error)
+			return {}
+		}
+	}
 
   // TODO: Create destructureLocationData method
   private destructureLocationData(locationData: any): Coordinates {
